@@ -1,4 +1,4 @@
-NOTE: Silver pop wsdl are customer specific make sure the wsdl. The wsdl for this project was acquired using:
+NOTE: Silver pop wsdl locations are specified for each customer. The wsdl for this project was acquired from:
 
 `api4.silverpop.com/SoapApi?wsdl`
 
