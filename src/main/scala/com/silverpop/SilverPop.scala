@@ -22,12 +22,15 @@ object SilverPop extends App {
   val password = "xxxxx"
   val resp: Future[SessionMgmtResponseType] = service.login(username,password)
 
-  val response = Await.result(resp, 5 seconds)
-  response.SESSIONID match {
-    case Some(sessionId) =>
-        println(response.SESSIONID)
-    case None =>
-      println(response.Fault.get.faulttypesequence1.get.FaultString)
+  resp map { smrt: SessionMgmtResponseType =>
+
+    smrt match {
+    case SessionMgmtResponseType(true,_,sessionId,_,_) =>
+        println(smrt.SESSIONID)
+
+      case SessionMgmtResponseType(false,fault,_,_,_) =>
+        println(fault.get.faulttypesequence1.get.FaultString)
+    }
   }
 
 }
